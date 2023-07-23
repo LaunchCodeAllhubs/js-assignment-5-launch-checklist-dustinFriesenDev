@@ -1,41 +1,23 @@
 // Write your helper functions here!
-// require('isomorphic-fetch');
+require('isomorphic-fetch');
 
-
-
-
-window.addEventListener("load", function(){
-    let form = this.document.querySelector("form");
-    addDestinationInfo(document, "name", "diameter", "star", "distance", "moons", "imageUrl");
-    form.addEventListener("submit", function(event){
-        event.preventDefault();
-        let list = document.getElementById("faultyItems");
-        let pilot = document.querySelector("input[name=pilotName]").value;
-        let copilot = document.querySelector("input[name=copilotName]").value;
-        let fuelLevel = document.querySelector("input[name=fuelLevel").value; 
-        let cargoLevel = document.querySelector("input[name=cargoMass]").value;
-        
-        formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
-        
-    })
-});
     
 
 //
     function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     // Here is the HTML formatting for our mission target div.
-    let missionTarget = document.getElementById("missionTarget")
-    missionTarget.innerHTML = `
-                    <h2>Mission Destination</h2>
-                    <ol>
-                        <li>Name: ${name} </li>
-                        <li>Diameter: ${diameter} </li>
-                        <li>Star: ${star}</li>
-                        <li>Distance from Earth: ${distance} </li>
-                        <li>Number of Moons: ${moons} </li>
-                    </ol>
-                    <img src="${"imageURL"}">
-    `
+        let missionTarget = document.getElementById("missionTarget");
+        missionTarget.innerHTML = `
+                        <h2>Mission Destination</h2>
+                        <ol>
+                            <li>Name: ${name} </li>
+                            <li>Diameter: ${diameter} </li>
+                            <li>Star: ${star}</li>
+                            <li>Distance from Earth: ${distance} </li>
+                            <li>Number of Moons: ${moons} </li>
+                        </ol>
+                        <img src="${imageUrl}"/>
+        `
     }
 
     function validateInput(testInput) {
@@ -65,10 +47,10 @@ window.addEventListener("load", function(){
         let launchStatus = document.getElementById("launchStatus");
 
         if(validatePilot === "Empty" || validateCopilot === "Empty" || validateFuel === "Empty" || validateCargo === "Empty"){
-            alert("All Fields Require Input");
+            alert("All fields are required!");
             return;
         }else if (validatePilot === "Is a Number" || validateCopilot === "Is a Number" || validateFuel === "Not a Number" || validateCargo === "Not a Number"){
-            alert("Please Enter Valid Input");
+            alert("Make sure to enter valid information for each field!");
             return;
         };
 
@@ -106,18 +88,19 @@ window.addEventListener("load", function(){
     
     }
         
-
-
     async function myFetch() {
         let planetsReturned;
-
-        planetsReturned = await fetch().then( function(response) {
-            });
+        planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+            return response.json();
+        });
 
         return planetsReturned;
     }
-
+   
     function pickPlanet(planets) {
+        
+        let index = Math.floor(Math.random()*6)
+        return planets[index];
     }
 
 module.exports.addDestinationInfo = addDestinationInfo;
