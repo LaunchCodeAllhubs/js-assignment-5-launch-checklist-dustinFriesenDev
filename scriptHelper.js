@@ -2,8 +2,6 @@
 require('isomorphic-fetch');
 
     
-
-//
     function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
     // Here is the HTML formatting for our mission target div.
         let missionTarget = document.getElementById("missionTarget");
@@ -56,26 +54,26 @@ require('isomorphic-fetch');
 
         if (fuelLevel < 10000 && cargoLevel > 10000){
             list.style.visibility = "visible";
-            launchStatus.innerHTML = "Shuttle not ready for launch";
+            launchStatus.innerHTML = "Shuttle Not Ready for Launch";
             launchStatus.style.color = "red";
             fuelLevel = "too low";
             cargoLevel = "too heavy";
         } else if(fuelLevel >= 10000 && cargoLevel > 10000){
             list.style.visibility = "visible";
-            launchStatus.innerHTML = "Shuttle not ready for launch";
-            launchStatus.style.color = "#C7254E";
+            launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+            launchStatus.style.color = "rgb(199, 37, 78)";
             fuelLevel = "high enough";
             cargoLevel = "too heavy";
         } else if(fuelLevel < 10000 && cargoLevel <= 10000){
             list.style.visibility = "visible";
-            launchStatus.innerHTML = "Shuttle not ready for launch";
-            launchStatus.style.color = "red";
+            launchStatus.innerHTML = "Shuttle Not Ready for Launch";
+            launchStatus.style.color = "rgb(199, 37, 78)";
             fuelLevel = "too low";
             cargoLevel = "low enough";
         } else {
             list.style.visibility = "visible";
-            launchStatus.innerHTML = "Shuttle is ready for launch";
-            launchStatus.style.color = "#419F6A";
+            launchStatus.innerHTML = "Shuttle is Ready for Launch";
+            launchStatus.style.color = "rgb(65, 159, 106)";
             fuelLevel = "high enough";
             cargoLevel = "low enough";
 
