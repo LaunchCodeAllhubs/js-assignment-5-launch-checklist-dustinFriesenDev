@@ -22,9 +22,9 @@ window.addEventListener("load", function(){
     let listedPlanetsResponse = myFetch();
     listedPlanetsResponse.then(function (result) {
         listedPlanets = result;
-    //     console.log(listedPlanets);
-    // }).then(function () {
-    //     console.log(listedPlanets);
+        console.log(listedPlanets);
+    }).then(function () {
+        console.log(listedPlanets);
         // Below this comment call the appropriate helper functions to pick a planet from the list of planets and add that information to your destination.
         let planetIndex = pickPlanet(listedPlanets);
         addDestinationInfo(document, planetIndex.name, planetIndex.diameter, planetIndex.star, planetIndex.distance, planetIndex.moons, planetIndex.image);
