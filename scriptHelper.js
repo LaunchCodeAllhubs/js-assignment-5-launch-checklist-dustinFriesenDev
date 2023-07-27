@@ -19,12 +19,12 @@ require('isomorphic-fetch');
     }
 
     function validateInput(testInput) {
-            let integerTestInput = parseInt(testInput, 10);
-            if (testInput === " " || testInput === "" || typeof testInput === "undefined") {
+            // let integerTestInput = parseInt(testInput, 10);
+            if (testInput === " " || testInput === "") {
                  return "Empty";
-            } else if(isNaN(integerTestInput) || typeof integerTestInput === "string"){
+            } else if(isNaN(testInput)){
                 return "Not a Number";
-            } else if (typeof integerTestInput === "number" ) {
+            } else if (isNaN(testInput) === false) {
                 return "Is a Number";
             } 
         }
@@ -91,7 +91,7 @@ require('isomorphic-fetch');
         planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response){
            return response.json();
         });
-        return await planetsReturned;
+        return planetsReturned;
     }
    
     function pickPlanet(planets) {
